@@ -46,4 +46,18 @@ public class Usuario {
         this.nome = nome;
     }
 
+
+    @Override
+    public String toString() {
+        return "Usuario: " +
+                "nome: " + nome + '\'' +
+                ", email: " + email + '\'' +
+                ", dataNascimento: " + dataNascimento + '\'' +
+                ", serviceUsuario=" + serviceUsuario;
+    }
+
+    public String exibirInfo(){
+        return toString();
+    }
+
 }
