@@ -2,12 +2,16 @@ package domain;
 
 import service.ServiceUsuario;
 
+import java.time.LocalDateTime;
+
 public class Usuario {
 
     private String nome;
     private String email;
     private  String dataNascimento;
+    private int idade;
     private  final ServiceUsuario serviceUsuario;
+
 
 
     public Usuario(String nome, String email, String dataNascimento) {
@@ -15,6 +19,7 @@ public class Usuario {
         this.email = email;
         this.dataNascimento = dataNascimento;
         this.serviceUsuario = new ServiceUsuario();
+
     }
 
     public ServiceUsuario getServiceUsuario() {
@@ -46,18 +51,27 @@ public class Usuario {
         this.nome = nome;
     }
 
+    public void setIdade(int idade){
+        this.idade = idade;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
 
     @Override
     public String toString() {
-        return "Usuario: " +
-                "nome: " + nome + '\'' +
-                ", email: " + email + '\'' +
-                ", dataNascimento: " + dataNascimento + '\'' +
-                ", serviceUsuario=" + serviceUsuario;
+        setIdade(idadeUsuario(dataNascimento));
+        return "nome: " + nome + '\n' +
+                "email: " + email + '\n' +
+                "idade: : " + idade;
     }
 
     public String exibirInfo(){
         return toString();
+    }
+    public int idadeUsuario(String dataNasci){
+        return serviceUsuario.Idade(dataNasci);
     }
 
 }
