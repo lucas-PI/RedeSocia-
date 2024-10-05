@@ -3,6 +3,7 @@ package domain;
 import service.ServiceUsuario;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Usuario {
 
@@ -10,6 +11,7 @@ public class Usuario {
     private String email;
     private  String dataNascimento;
     private int idade;
+
     private  final ServiceUsuario serviceUsuario;
 
 
@@ -19,6 +21,7 @@ public class Usuario {
         this.email = email;
         this.dataNascimento = dataNascimento;
         this.serviceUsuario = new ServiceUsuario();
+
 
     }
 
@@ -30,6 +33,7 @@ public class Usuario {
 
         return nome;
     }
+
 
     public String getEmail() {
         return email;
@@ -70,8 +74,15 @@ public class Usuario {
     public String exibirInfo(){
         return toString();
     }
-    public int idadeUsuario(String dataNasci){
+
+    public void criarPostagem(){
+         serviceUsuario.savePostagem(serviceUsuario.criarPostagem(getNome()));
+    }
+
+    private int idadeUsuario(String dataNasci){
         return serviceUsuario.Idade(dataNasci);
     }
+
+
 
 }
